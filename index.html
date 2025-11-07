@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald - HTML5 Games</title>
+    <!-- Load Tailwind CSS from CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* 1. KEYFRAMES FOR ANIMATED BACKGROUND: Defines the slow, floating motion */
+        @keyframes floatBackground {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Base dark background color */
+            background-color: #061e1b;
+            color: #d1fae5; /* Light mint green text */
+            position: relative; /* Needed for ::before positioning */
+            z-index: 0; /* Ensure body children are above the animation */
+            overflow-x: hidden; /* Prevent horizontal scroll from animation */
+        }
+        
+        /* 2. ANIMATED BACKGROUND LAYER: Creates the subtle dot field */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place behind all content */
+            opacity: 0.25;
+            
+            /* Pattern of small, glowing emerald dots using radial-gradient */
+            background-image: radial-gradient(#34d399 1.5px, transparent 1.5px),
+                              radial-gradient(#059669 1.5px, transparent 1.5px);
+            background-size: 120px 120px;
+            
+            /* Apply the slow floating animation over 60 seconds */
+            animation: floatBackground 60s linear infinite alternate;
+        }
+
+        /* Ensure all content layers sit above the animated background */
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Custom utility for the main theme green */
+        /* Updated this to be used as a link/button inside the card */
+        .btn-primary {
+            @apply bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition duration-300 ease-in-out;
+        }
+        .card-bg {
+            background-color: #0c3430; /* Slightly lighter than body for cards */
+        }
+        .text-neon-green {
+            color: #34d399; /* Tailwind emerald-400 equivalent for neon effect */
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 md:p-6 shadow-2xl sticky top-0 z-10 bg-[#062c28]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center">
+                <!-- Title: Replaced emoji with modern SVG gem -->
+                <h1 class="text-3xl font-extrabold text-neon-green tracking-tight flex items-center">
+                    <svg class="w-8 h-8 mr-2 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 22L22 7L12 2Z"/>
+                    </svg>
+                    EMERALD GAMES
+                </h1>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#games" class="text-lg text-emerald-200 hover:text-white transition duration-200">Games</a>
+                    <a href="#" class="text-lg text-emerald-200 hover:text-white transition duration-200">About</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-emerald-200 hover:text-white text-2xl">
+                    <!-- Hamburger Icon (M4 6h16M4 12h16M7 18h9) -->
+                    <svg id="hamburger-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <!-- Close Icon (M6 18L18 6M6 6l12 12) - Hidden by default -->
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Content (Hidden by default on mobile) -->
+            <nav id="mobile-menu" class="hidden md:hidden pt-4 pb-2 space-y-2 border-t border-emerald-700 mt-4">
+                <a href="#games" class="block text-lg text-emerald-200 hover:bg-emerald-800 p-2 rounded-lg transition duration-200">Games</a>
+                <a href="#" class="block text-lg text-emerald-200 hover:bg-emerald-800 p-2 rounded-lg transition duration-200">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Hero Section - Simple and centered -->
+        <!-- Added transition and hover effects for a responsive feel -->
+        <section class="text-center py-16 mb-12 rounded-3xl bg-emerald-900/30 border border-emerald-700/50 shadow-2xl 
+                        transition duration-500 ease-in-out transform hover:scale-[1.005] hover:shadow-emerald-400/50">
+            <p class="text-lg font-semibold text-emerald-300 mb-2 uppercase tracking-widest">Instant Fun. No Downloads.</p>
+            <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-white">
+                Welcome to <span class="text-neon-green">Emerald</span>
+            </h2>
+            <p class="text-xl max-w-3xl mx-auto mb-8 text-emerald-100">
+                Dive into a collection of free, responsive HTML5 games that run directly in your browser. Green gaming at its finest.
+            </p>
+            <a href="#games" class="btn-primary text-xl">
+                Start Exploring &rarr;
+            </a>
+        </section>
+
+        <!-- Game Showcase Section -->
+        <section id="games" class="py-12">
+            <h3 class="text-4xl font-bold mb-10 text-center text-neon-green">Our Game Collection</h3>
+
+            <!-- Dynamic container for game cards -->
+            <div id="game-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Game cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 py-8 bg-[#062c28] border-t border-emerald-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-emerald-300 text-sm">
+            <p>&copy; 2025 Emerald Games. All HTML5 Games. | Powered by Green.</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="hover:text-white transition duration-200">Privacy Policy</a>
+                <span class="text-emerald-500">|</span>
+                <a href="#" class="hover:text-white transition duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Content Generation & Interactivity -->
+    <script>
+        // 1. GAME DATA: Add, remove, or edit games easily here!
+        const gamesData = [
+            { title: "Emerald Runner", description: "Collect green gems and avoid red hazards in this fast-paced endless runner game.", url: "runner.html", image: "https://placehold.co/600x400/059669/ffffff?text=Runner+Game" },
+            { title: "Green Zen Puzzle", description: "A calming, minimalist match-three game focused on nature elements and soft music.", url: "zen.html", image: "https://placehold.co/600x400/34d399/10b981?text=Puzzle+Game" },
+            { title: "Crypto Miner Clicker", description: "Simulate mining virtual currency and building your empire in this clicker game.", url: "miner.html", image: "https://placehold.co/600x400/84cc16/ffffff?text=Clicker+Game" },
+            { title: "Toxic Tank Battle", description: "Turn-based strategy game where you launch powerful, acidic projectiles at your opponent.", url: "tank.html", image: "https://placehold.co/600x400/0d9488/ffffff?text=Tank+Battle" },
+            { title: "Leaf Jumper", description: "Time your jumps perfectly across moving lily pads to score points in this arcade game.", url: "jumper.html", image: "https://placehold.co/600x400/047857/ffffff?text=Arcade+Jumper" },
+            { title: "Infinite Golf", description: "Minimalist physics game with procedurally generated courses and tricky shots.", url: "golf.html", image: "https://placehold.co/600x400/4ade80/ffffff?text=Golf+Game" },
+        ];
+
+        // 2. FUNCTION: Generates the HTML for all the cards
+        function renderGameCards() {
+            const container = document.getElementById('game-cards-container');
+            if (!container) return; 
+
+            const cardsHTML = gamesData.map(game => `
+                <a href="${game.url}" class="card-bg block p-6 rounded-2xl shadow-xl hover:shadow-emerald-500/50 
+                       transition duration-300 transform hover:-translate-y-1 border border-emerald-800 group" role="link">
+                    
+                    <!-- Image/Preview Box -->
+                    <div class="h-40 overflow-hidden rounded-xl mb-4">
+                        <img src="${game.image}" 
+                             alt="Preview image for ${game.title}" 
+                             class="w-full h-full object-cover transition duration-300 group-hover:scale-105" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/0c3430/ffffff?text=Image+Load+Failed';">
+                    </div>
+
+                    <h4 class="text-2xl font-semibold mb-2 text-emerald-300 group-hover:text-white transition duration-200">${game.title}</h4>
+                    <p class="text-emerald-100 mb-4 text-sm">${game.description}</p>
+                    
+                    <!-- Play Now Button (styled as a div inside the anchor) -->
+                    <div class="btn-primary w-full text-center text-base mt-2">
+                        Play Now
+                    </div>
+                </a>
+            `).join('');
+
+            container.innerHTML = cardsHTML;
+        }
+
+        // 3. FUNCTION: Toggles the mobile navigation menu
+        function setupMobileMenuToggle() {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (button && menu) {
+                button.addEventListener('click', () => {
+                    // Toggle the 'hidden' class on the menu
+                    menu.classList.toggle('hidden');
+
+                    // Toggle the icons
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+                
+                // Close menu when a link is clicked (useful for anchors like #games)
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                        hamburgerIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                    });
+                });
+            }
+        }
+
+
+        // 4. EXECUTE: Run setup functions when the page loads
+        window.onload = function() {
+            renderGameCards();
+            setupMobileMenuToggle();
+        };
+    </script>
+
+</body>
+</html>
