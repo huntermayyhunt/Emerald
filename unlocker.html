@@ -11,10 +11,11 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #061e1b; /* Matching background color */
-            color: #d1fae5; /* Light text color for consistency */
+            background-color: #061e1b;
+            color: #d1fae5;
             position: relative;
             z-index: 0;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -72,6 +73,12 @@
             background-color: #062c28; /* Matching footer color */
             color: #d1fae5; /* Light text color */
         }
+
+        /* Add padding to sections */
+        section {
+            padding: 20px;
+        }
+
     </style>
 </head>
 <body class="min-h-screen antialiased">
@@ -93,7 +100,7 @@
 
     <!-- Unlocker Section (iframe) -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <section id="unlocker" class="py-12">
+        <section id="unlocker" class="py-12 text-center">
             <h3 class="text-4xl font-bold mb-6 text-center text-neon-green">Unlocker</h3>
             <iframe src="https://example.com"></iframe> <!-- Replace this URL with the one you want to embed -->
         </section>
