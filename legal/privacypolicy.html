@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Emerald Games</title>
+    <link rel="icon" type="image/png" href="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/Emerald_JE3_BE3.png/revision/latest/thumbnail/width/360/height/360?cb=20191229174220">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #061e1b;
+            color: #d1fae5;
+            position: relative;
+            z-index: 0;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.25;
+            background-image: radial-gradient(#34d399 1.5px, transparent 1.5px), radial-gradient(#059669 1.5px, transparent 1.5px);
+            background-size: 120px 120px;
+            animation: floatBackground 60s linear infinite alternate;
+        }
+
+        @keyframes floatBackground {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .btn-primary {
+            background-color: #34d399;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #059669;
+            animation: buttonHover 0.6s ease-in-out;
+        }
+
+        @keyframes buttonHover {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        header {
+            background-color: #062c28;
+        }
+
+        footer {
+            background-color: #062c28;
+            color: #d1fae5;
+        }
+
+        /* Section styles */
+        section {
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 md:p-6 shadow-2xl sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-neon-green flex items-center">
+                <svg class="w-8 h-8 mr-2 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 22L22 7L12 2Z"/>
+                </svg>
+                EMERALD GAMES - Privacy Policy
+            </h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-lg text-emerald-200 hover:text-white transition duration-200">Back to Games</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section>
+            <h2 class="text-3xl font-bold text-center text-neon-green">Privacy Policy</h2>
+            <p class="mt-4 text-lg text-emerald-200">
+                Emerald Games respects your privacy. This Privacy Policy outlines how we collect, use, and protect your information.
+            </p>
+            <p class="mt-4 text-lg text-emerald-200">
+                <strong>1. Information We Collect</strong><br>
+                We collect personal information such as your email address, name, and other contact details when you sign up or interact with the website.
+            </p>
+            <p class="mt-4 text-lg text-emerald-200">
+                <strong>2. How We Use Your Information</strong><br>
+                We use your information to improve our services, communicate with you, and send you updates about new games and features.
+            </p>
+            <p class="mt-4 text-lg text-emerald-200">
+                <strong>3. Data Security</strong><br>
+                We implement security measures to protect your information. However, no method of transmission over the Internet is 100% secure.
+            </p>
+            <p class="mt-4 text-lg text-emerald-200">
+                <strong>4. Third-Party Links</strong><br>
+                Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites.
+            </p>
+            <p class="mt-4 text-lg text-emerald-200">
+                <strong>5. Changes to This Privacy Policy</strong><br>
+                We may update this Privacy Policy from time to time. We recommend reviewing this page periodically for updates.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 py-8 border-t border-emerald-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-emerald-300 text-sm">
+            <p>&copy; 2025 Emerald Games. All HTML5 Games. | Powered by Green.</p>
+            <div class="mt-2 space-x-4">
+                <a href="privacy-policy.html" class="hover:text-white transition duration-200">Privacy Policy</a>
+                <span class="text-emerald-500">|</span>
+                <a href="terms-of-service.html" class="hover:text-white transition duration-200">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
